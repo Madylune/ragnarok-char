@@ -1,0 +1,96 @@
+@greyBorder: #C9C9C9;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-image: url("images/payon.png");
+    background-size: cover;
+    font-family: "Gill Sans", sans-serif;
+
+    .main-container {
+        .window {
+            border: 2px solid @greyBorder;
+            background-color: white;
+            border-radius: 5px;
+            margin: 30px auto;
+            width: 50%;
+            min-height: 700px;
+
+            .window-header {
+                height: 40px;
+                background-image: linear-gradient(to bottom, #8494CE,#B5C6E7, #9CADDE,#A5BDE7,#9CB5E7,#BDCEF7,#ADC6F7,#CEDEFF,#BDDEF7,#DEF7FF);
+
+                .btn-on-off {
+                    display: flex;
+                    justify-content: end;
+
+                    .round-btn {
+                        height: 25px;
+                        width: 25px;
+                        border-radius: 50%;
+                        background: linear-gradient( #BF3229,#A41213,#B40404, #8A0808,#610B0B);
+                        box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
+                        0 -1px 0 rgba( 255, 255, 255, 0.4);
+                        margin: 5px;
+
+                        &:hover {
+                            background-image: linear-gradient(#D64A3B,#CF4336,#C73A30,#BF3229,#A41213);
+                        }
+
+                        &:active{
+                            background: linear-gradient( #BF3229,#A41213,#B40404, #8A0808,#610B0B);
+                            box-shadow: 1px 1px 10px #3B0B0B inset, 
+                            0 1px 0 rgba( 255, 255, 255, 0.4);
+                       }
+                    }
+                }
+            }
+
+            .window-nav {
+                border-bottom: 1px solid @greyBorder;
+                ul {
+                    list-style: none;
+                    display: flex;
+                    li {
+                        display: inline-block;
+                        border: 1px solid @greyBorder;
+                        border-top-right-radius: 5px;
+                        border-top-left-radius: 5px;
+                        border-bottom: none;
+                        flex-basis: 12%;
+                        padding-left: 10px;
+                    }
+                    .active-tab {
+                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3) inset;
+                    }
+                }
+            }
+            .window-screen {
+
+                .screen.stats {
+                    display: flex;
+                    
+                    .stats-data { 
+                        flex-basis: 50%;
+                        margin: 40px 0 0 20px;
+                        .stats-title {
+                            color: #464E59;
+                            font-weight: bold;
+                        }
+                        td {
+                            border-bottom: 1px solid @greyBorder;
+                        }
+                    }
+                    .char {
+                        margin-left: 30px;
+                        .char-image {
+                            height: 300px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
