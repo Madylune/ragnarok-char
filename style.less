@@ -61,6 +61,7 @@ body {
                         border-bottom: none;
                         flex-basis: 12%;
                         padding-left: 10px;
+                        font-size: 20px;
                     }
                     .active-tab {
                         box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3) inset;
@@ -68,13 +69,21 @@ body {
                 }
             }
             .window-screen {
-
+                margin-top: 50px;
                 .screen.stats {
                     display: flex;
-                    
+                    flex-direction: column;
+                    align-items: center;
+                    display: none;
+                    .char {
+                        margin-bottom: 20px;
+                        .char-image {
+                            height: 300px;
+                        }
+                    }
                     .stats-data { 
-                        flex-basis: 50%;
-                        margin: 40px 0 0 20px;
+                        font-size: 18px;
+                        width: 80%;
                         .stats-title {
                             color: #464E59;
                             font-weight: bold;
@@ -83,12 +92,30 @@ body {
                             border-bottom: 1px solid @greyBorder;
                         }
                     }
-                    .char {
-                        margin-left: 30px;
-                        .char-image {
-                            height: 300px;
+                }
+
+                .screen.equip {
+                    display: flex;
+                    align-items: center;
+                    table, td, tr {
+                        border: 1px solid @greyBorder;
+                        border-collapse: collapse;
+
+                        td {
+                            width: 30%;
                         }
                     }
+                    .char {
+                        text-align: center;
+                        .char-image {
+                            height: 250px;
+                        }
+                    }
+                    .stuff {
+                        img {
+                            height: 40px;
+                        }
+                    }     
                 }
             }
         }
