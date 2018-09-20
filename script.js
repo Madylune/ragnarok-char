@@ -31,35 +31,106 @@ function changeSkin() {
     header.classList = 'window-header ' + selectedSkin;
 }
 
-function changeMap() {
-    const selectedMap = document.querySelector('.maps').value;
-    document.body.style.backgroundImage = "url('images/" + selectedMap + ".png')";
-}
-
 function putMusic() {
+    //Check if we already have <audio> if yes we delete it
+    const toDeleteMusic = document.querySelector('#bgSong');
+    if (toDeleteMusic) {
+        toDeleteMusic.remove();
+    }
+    //Check if bgm option is checked
     const bgmOpt = document.querySelector('.bgm-option');
-    const music = document.createElement("audio");
-    music.src = selectedMap + ".mp3";
-
+    const selectedMap = document.querySelector('.maps').value;
     if (bgmOpt.checked) {
-        console.log('Music is playing...');
-        music.play();
+        const music = document.createElement("audio");
+        music.type = "audio/mp3";
+        const musicHead = document.getElementsByTagName('body')[0];
+        music.src="sounds/" + selectedMap +".mp3";
+        music.id="bgSong" ;
+        music.autoplay = true;
+        musicHead.appendChild(music);     
     } else {
         console.log('No music...');
-        music.pause();
+        if (toDeleteMusic) {
+            toDeleteMusic.remove();
+        }
     }
 }
 
-function putSound() {
-    const effectsOpt = document.querySelector('.effects-option');
-    const sound = document.createElement("audio");
-    sound.src = selectedSkill + ".mp3";
+function changeMap() {
+    const selectedMap = document.querySelector('.maps').value;
+    document.body.style.backgroundImage = "url('images/" + selectedMap + ".png')";
+    //Change music when we change map
+    putMusic();
+}
 
+function putSGSound() {
+    document.querySelector('.skills-msg').style.opacity = 0;
+    //Check if we already have <audio> if yes we delete it
+    const toDeleteSound = document.querySelector('#effectSound');
+    if (toDeleteSound) {
+        toDeleteSound.remove();
+    }
+    const effectsOpt = document.querySelector('.effects-option');
     if (effectsOpt.checked) {
-        console.log('Effects sound activated');
-        sound.play();
+        const sound = document.createElement("audio");
+        sound.type = "audio/mp3";
+        const soundHead = document.getElementsByTagName('body')[0];
+        sound.src="sounds/sg.mp3";
+        sound.id="effectSound" ;
+        sound.autoplay = true;
+        soundHead.appendChild(sound);     
     } else {
-        console.log('Effects sound desactivated');
-        sound.pause();
+        console.log('Sorry sound effect unavailable...');
+        if (toDeleteSound) {
+            toDeleteSound.remove();
+        }
+    }
+}
+
+function putIWSound() {
+    document.querySelector('.skills-msg').style.opacity = 0;
+    //Check if we already have <audio> if yes we delete it
+    const toDeleteSound = document.querySelector('#effectSound');
+    if (toDeleteSound) {
+        toDeleteSound.remove();
+    }
+    const effectsOpt = document.querySelector('.effects-option');
+    if (effectsOpt.checked) {
+        const sound = document.createElement("audio");
+        sound.type = "audio/mp3";
+        const soundHead = document.getElementsByTagName('body')[0];
+        sound.src="sounds/iw.mp3";
+        sound.id="effectSound" ;
+        sound.autoplay = true;
+        soundHead.appendChild(sound);     
+    } else {
+        console.log('Sorry sound effect unavailable...');
+        if (toDeleteSound) {
+            toDeleteSound.remove();
+        }
+    }
+}
+
+function putMVPSound() {
+    //Check if we already have <audio> if yes we delete it
+    const toDeleteSound = document.querySelector('#effectSound');
+    if (toDeleteSound) {
+        toDeleteSound.remove();
+    }
+    const effectsOpt = document.querySelector('.effects-option');
+    if (effectsOpt.checked) {
+        const sound = document.createElement("audio");
+        sound.type = "audio/mp3";
+        const soundHead = document.getElementsByTagName('body')[0];
+        sound.src="sounds/mvp.mp3";
+        sound.id="effectSound" ;
+        sound.autoplay = true;
+        soundHead.appendChild(sound);
+        document.querySelector('.skills-msg').style.opacity = 1;
+    } else {
+        console.log('Sorry this sound effect is unavailable...');
+        if (toDeleteSound) {
+            toDeleteSound.remove();
+        }
     }
 }

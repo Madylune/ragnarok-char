@@ -12,7 +12,7 @@
 
     <title>Ragnarok Character Management</title>
 </head>
-<body onload="putMusic()">
+<body>
     <header>
         <img class="logo" src="images/logo.png" alt="logo">
     </header>
@@ -125,24 +125,25 @@
                     <div class="skills-container">
                         <div class="skills-tree">
                             <div class="skill">
-                                <img class="skill-icon"" src="images/SG.png" alt="" onclick="putSound()">
+                                <img id="sg" class="skill-icon" src="images/SG.png" alt="" onclick="putSGSound()">
                                 <h5>Storm Gust</h5>
                             </div>
                             <div class="skill">
-                                <img class="skill-icon" src="images/JT.png" alt="" onclick="putSound()">
+                                <img class="skill-icon" src="images/JT.png" alt="" onclick="putMVPSound()">
                                 <h5>Jupitel Thunder</h5>
                             </div>
                             <div class="skill">
-                                <img class="skill-icon" src="images/MS.png" alt="" onclick="putSound()">
+                                <img class="skill-icon" src="images/MS.png" alt="" onclick="putMVPSound()">
                                 <h5>Meteor Storm</h5>
                             </div>
                             <div class="skill">
-                                <img class="skill-icon" src="images/IW.png" alt="" onclick="putSound()">
+                                <img id="iw" class="skill-icon" src="images/IW.png" alt="" onclick="putIWSound()">
                                 <h5>Ice Wall</h5>
                             </div>
                         </div>
                         <div class="char-image">
-                            <img class="char" src="images/casting.gif" alt="char" onclick="putSound()">
+                            <p class="skills-msg">Sorry this sound effect is unavailable. Enjoy this MVP sound !</p>
+                            <img class="char" src="images/casting.gif" alt="char">
                         </div>
                     </div>
                 </div>
