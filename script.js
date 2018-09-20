@@ -59,6 +59,22 @@ function putMusic() {
 function changeMap() {
     const selectedMap = document.querySelector('.maps').value;
     document.body.style.backgroundImage = "url('images/" + selectedMap + ".png')";
+
+    //Put warp sound after changing map
+    const x = document.querySelector('#effectSound');
+    if (x) { x.remove(); }
+    const effectsOpt = document.querySelector('.effects-option');
+    if (effectsOpt.checked) {
+        const sound = document.createElement("audio");
+        sound.type = "audio/mp3";
+        const soundHead = document.getElementsByTagName('body')[0];
+        sound.src="sounds/warp.mp3";
+        sound.id="effectSound" ;
+        sound.autoplay = true;
+        soundHead.appendChild(sound); 
+    } else {
+        if (x) { x.remove(); } 
+    }
     //Change music when we change map
     putMusic();
 }
