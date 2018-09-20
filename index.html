@@ -13,110 +13,195 @@
     <title>Ragnarok Character Management</title>
 </head>
 <body>
+    <header>
+        <img class="logo" src="images/logo.png" alt="logo">
+    </header>
     <div class="main-container">
+        <div class="myChar-container">
+            <div class="myChar">
+                <img class="bubble" src="images/bubble.png" alt="" onclick="openWindow()">
+                <img class="char" src="images/sitting.png" alt="">
+            </div>
+        </div>
         <div class="window">
-            <div class="window-header">
+            <div class="window-header basic">
                 <div class="btn-on-off">
-                    <div class="round-btn"></div>
+                    <div class="round-btn" onclick="closeWindow()"></div>
                 </div>
             </div>
             <div class="window-nav">
                 <ul>
-                    <li class="active-tab">Stats</li>
-                    <li>Equip</li>
-                    <li>Skills</li>
-                    <li>Items</li>
-                    <li>Options</li>
+                    <li class="tab" onclick="toggleTab(event, 'Stats')">Stats</li>
+                    <li class="tab" onclick="toggleTab(event, 'Equip')">Equip</li>
+                    <li class="tab" onclick="toggleTab(event, 'Skills')">Skills</li>
+                    <li class="tab" onclick="toggleTab(event, 'Items')">Items</li>
+                    <li class="tab" onclick="toggleTab(event, 'Options')">Options</li>
                 </ul>
             </div>
             <div class="window-screen">
-                <div class="screen stats">
-                    <div class="char">
-                        <img class="char-image" src="images/walking.gif" alt="">
+                <div id="Stats" class="screen">
+                    <div class="stats-container">
+                        <div class="char">
+                            <img class="char-image" src="images/walking.gif" alt="">
+                        </div>
+                        <div class="stats-data">
+                            <table style="width:100%">
+                                <tr>
+                                    <td class="stats-title">Str</td>
+                                    <td>0 +17</td> 
+                                    <td class="stats-title">Atk</td>
+                                    <td>97 +0</td>
+                                    <td class="stats-title">Def</td>
+                                    <td>41 +37</td>
+                                </tr>
+                                <tr>
+                                    <td class="stats-title">Agi</td>
+                                    <td>1 +16</td> 
+                                    <td class="stats-title">Matk</td>
+                                    <td>519 +865</td>
+                                    <td class="stats-title">Mdef</td>
+                                    <td>22 +128</td>
+                                </tr>
+                                <tr>
+                                    <td class="stats-title">Vit</td>
+                                    <td>25 +5</td> 
+                                    <td class="stats-title">Hit</td>
+                                    <td>262</td>
+                                    <td class="stats-title">Flee</td>
+                                    <td>116 +7</td>
+                                </tr>
+                                <tr>
+                                    <td class="stats-title">Int</td>
+                                    <td>99 +29</td> 
+                                    <td class="stats-title">Critical</td>
+                                    <td>11</td>
+                                    <td class="stats-title">Aspd</td>
+                                    <td>151</td>
+                                </tr>
+                                <tr>
+                                    <td class="stats-title">Dex</td>
+                                    <td>99 +53</td> 
+                                    <td colspan="2" class="stats-title">Status Points</td>
+                                    <td colspan="2">0</td>
+                                </tr>
+                                <tr>
+                                    <td class="stats-title">Luk</td>
+                                    <td>1 +35</td> 
+                                    <td colspan="2" class="stats-title">Guild</td>
+                                    <td colspan="2">Roxxors</td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
-                    <div class="stats-data">
+                </div>
+                <div id="Equip" class="screen">
+                    <div class="equip-container">
                         <table style="width:100%">
                             <tr>
-                                <td class="stats-title">Str</td>
-                                <td>0 +17</td> 
-                                <td class="stats-title">Atk</td>
-                                <td>97 +0</td>
-                                <td class="stats-title">Def</td>
-                                <td>41 +37</td>
+                                <td class="stuff"><img src="images/parade-cap.gif" alt=""><span>Parade Hat</span></td>
+                                <td class="char" rowspan="5"><img class="char-image" src="images/walking2.gif" alt=""></td> 
+                                <td class="stuff right">Evil Wings Ears<img src="images/evil-ears.gif" alt=""><span></span></td>
                             </tr>
                             <tr>
-                                <td class="stats-title">Agi</td>
-                                <td>1 +16</td> 
-                                <td class="stats-title">Matk</td>
-                                <td>519 +865</td>
-                                <td class="stats-title">Mdef</td>
-                                <td>22 +128</td>
+                                <td class="stuff"><img src="images/scarlet-rose.gif" alt="">Scarlet Rose</td>
+                                <td class="stuff right">Orleans' Robe<img src="images/robe.gif" alt=""></td>
                             </tr>
                             <tr>
-                                <td class="stats-title">Vit</td>
-                                <td>25 +5</td> 
-                                <td class="stats-title">Hit</td>
-                                <td>262</td>
-                                <td class="stats-title">Flee</td>
-                                <td>116 +7</td>
+                                <td class="stuff"><img src="images/robe.gif" alt="">Thorn Staff of Darkness</td>
+                                <td class="stuff right">Orleans' Plate<img src="images/plate.gif" alt=""></td>
                             </tr>
                             <tr>
-                                <td class="stats-title">Int</td>
-                                <td>99 +29</td> 
-                                <td class="stats-title">Critical</td>
-                                <td>11</td>
-                                <td class="stats-title">Aspd</td>
-                                <td>151</td>
+                                <td class="stuff"><img src="images/nyd.gif" alt="">Nydhorgg's Shadow Garb</td>
+                                <td class="stuff right">Variant Shoes<img src="images/variant.gif" alt=""></td>
                             </tr>
                             <tr>
-                                <td class="stats-title">Dex</td>
-                                <td>99 +53</td> 
-                                <td colspan="2" class="stats-title">Status Points</td>
-                                <td colspan="2">0</td>
-                            </tr>
-                            <tr>
-                                <td class="stats-title">Luk</td>
-                                <td>1 +35</td> 
-                                <td colspan="2" class="stats-title">Guild</td>
-                                <td colspan="2">Roxxors</td>
+                                <td class="stuff"><img src="images/gloves.gif" alt="">Orleans' Glove</td>
+                                <td class="stuff right">Orleans' Glove<img src="images/gloves.gif" alt=""></td>
                             </tr>
                         </table>
                     </div>
                 </div>
-                <div class="screen equip">
-                    <table style="width:100%">
-                        <tr>
-                            <td class="stuff"><img src="images/parade-cap.gif" alt=""><span>Parade Hat</span></td>
-                            <td class="char" rowspan="5"><img class="char-image" src="images/walking2.gif" alt=""></td> 
-                            <td class="stuff"><img src="images/evil-ears.gif" alt=""><span>Evil Wings Ears</span></td>
-                        </tr>
-                        <tr>
-                            <td class="stuff"><img src="images/scarlet-rose.gif" alt="">Scarlet Rose</td>
-                            <td class="stuff"><img src="images/robe.gif" alt="">Orleans' Robe</td>
-                        </tr>
-                        <tr>
-                            <td class="stuff"><img src="images/robe.gif" alt="">Thorn Staff of Darkness</td>
-                            <td class="stuff"><img src="images/plate.gif" alt="">Orleans' Plate</td>
-                        </tr>
-                        <tr>
-                            <td class="stuff"><img src="images/nyd.gif" alt="">Nydhorgg's Shadow Garb</td>
-                            <td class="stuff"><img src="images/variant.gif" alt="">Variant Shoes</td>
-                        </tr>
-                        <tr>
-                            <td class="stuff"><img src="images/gloves.gif" alt="">Orleans' Glove</td>
-                            <td class="stuff"><img src="images/gloves.gif" alt="">Orleans' Glove</td>
-                        </tr>
-                    </table>
+                <div id="Skills" class="screen">
+                    <div class="skills-container">
+                        <div class="skills-tree">
+                            <div class="skill">
+                                <img class="skill-icon"" src="images/SG.png" alt="">
+                                <h5>Storm Gust</h5>
+                            </div>
+                            <div class="skill">
+                                <img class="skill-icon" src="images/JT.png" alt="">
+                                <h5>Jupitel Thunder</h5>
+                            </div>
+                            <div class="skill">
+                                <img class="skill-icon" src="images/MS.png" alt="">
+                                <h5>Meteor Storm</h5>
+                            </div>
+                            <div class="skill">
+                                <img class="skill-icon" src="images/IW.png" alt="">
+                                <h5>Ice Wall</h5>
+                            </div>
+                        </div>
+                        <div class="char-image">
+                            <img class="char" src="images/casting.gif" alt="char">
+                        </div>
+                    </div>
+                </div>
+                <div id="Items" class="screen">
+                    <div class="items-container">
+                        <h3>You have no item in your inventory...</h3>
+                        <h3>You have to hunt some monsters and drop their items.</h3>
+                        <img src="images/kafra.gif" alt="">
+                    </div>
+                </div>
+                <div id="Options" class="screen">
+                    <div class="options-container">
+                        <form>
+                            <div class="option">
+                                <label class="option-title">BGM</label>
+                                <div class="option-range">
+                                    <i class="fa fa-volume-off" aria-hidden="true" style="font-size:25px;"></i>
+                                    <input type="range" value="15" max="50" min="0" step="5">
+                                    <i class="fa fa-volume-up" aria-hidden="true" style="font-size:25px;"></i>
+                                </div>
+                                <label class="option-switch">
+                                    <input type="checkbox">
+                                    <span>on</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <label class="option-title">Effect</label>
+                                <div class="option-range">
+                                    <i class="fa fa-volume-off" aria-hidden="true" style="font-size:25px;"></i>
+                                    <input type="range" value="15" max="50" min="0" step="5">
+                                    <i class="fa fa-volume-up" aria-hidden="true" style="font-size:25px;"></i>
+                                </div>
+                                <label class="option-switch">
+                                    <input type="checkbox">
+                                    <span>on</span>
+                                </label>
+                            </div>
+                            <div class="option">
+                                <label class="option-title">Skin</label>
+                                <select class="skins" name="skins" onchange="changeSkin()">
+                                    <option class="skin" value="basic">Basic skin</option>
+                                    <option class="skin" value="purple">Purple</option>
+                                    <option class="skin" value="gold">Gold</option>
+                                </select>
+                            </div>
+                            <div class="option">
+                                <label class="option-title">Map</label>
+                                <select class="maps" name="maps" onchange="changeMap()">
+                                    <option class="map" value="payon">Payon</option>
+                                    <option class="map" value="prontera">Prontera</option>
+                                    <option class="map" value="morroc">Morroc</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 @greyBorder: #C9C9C9;
+@blueTitle: #464E59;
 
 * {
     margin: 0;
@@ -8,20 +9,43 @@ body {
     background-image: url("images/payon.png");
     background-size: cover;
     font-family: "Gill Sans", sans-serif;
-
+    .logo {
+        height: 120px;
+    }
     .main-container {
+        .myChar-container {
+            display: none;
+            .myChar {
+                width: 400px;
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                .bubble {
+                    float: right;
+                    width: 200px;
+                    cursor: pointer;
+                }
+            }
+        }
         .window {
             border: 2px solid @greyBorder;
             background-color: white;
             border-radius: 5px;
-            margin: 30px auto;
+            margin: auto;
             width: 50%;
             min-height: 700px;
 
             .window-header {
                 height: 40px;
-                background-image: linear-gradient(to bottom, #8494CE,#B5C6E7, #9CADDE,#A5BDE7,#9CB5E7,#BDCEF7,#ADC6F7,#CEDEFF,#BDDEF7,#DEF7FF);
-
+                &.basic {
+                    background-image: linear-gradient(to bottom, #8494CE,#B5C6E7, #9CADDE,#A5BDE7,#9CB5E7,#BDCEF7,#ADC6F7,#CEDEFF,#BDDEF7,#DEF7FF);
+                }
+                &.purple {
+                    background-image: linear-gradient(to bottom, #705E86,#9689A4, #9689A4,#A396B2,#9689A4,#A396B2,#9689A4,#A396B2,#9689A4,#BBAFC9);
+                }
+                &.gold {
+                    background-image: linear-gradient(to bottom, #C79216,#DDA420, #DDA420,#E4B23C,#DDA420,#E4B23C,#DDA420,#E4B23C,#DDA420,#E4B23C);
+                }
                 .btn-on-off {
                     display: flex;
                     justify-content: end;
@@ -34,6 +58,7 @@ body {
                         box-shadow: 0 0 5px rgba( 0, 0, 0, 0.5),
                         0 -1px 0 rgba( 255, 255, 255, 0.4);
                         margin: 5px;
+                        cursor: pointer;
 
                         &:hover {
                             background-image: linear-gradient(#D64A3B,#CF4336,#C73A30,#BF3229,#A41213);
@@ -53,7 +78,7 @@ body {
                 ul {
                     list-style: none;
                     display: flex;
-                    li {
+                    .tab {
                         display: inline-block;
                         border: 1px solid @greyBorder;
                         border-top-right-radius: 5px;
@@ -62,60 +87,127 @@ body {
                         flex-basis: 12%;
                         padding-left: 10px;
                         font-size: 20px;
+                        cursor: pointer;
+
+                        &:hover {
+                            background-color: lightgray;
+                        }
+
+                        &.active {
+                            box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3) inset;
+                        }
                     }
-                    .active-tab {
-                        box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3) inset;
-                    }
+
                 }
             }
             .window-screen {
-                .screen.stats {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+                .screen {
                     display: none;
-                    .char {
-                        .char-image {
-                            height: 300px;
+
+                    &#Stats {
+                        display: block;
+                        .stats-container {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            .char {
+                                .char-image {
+                                    height: 300px;
+                                }
+                            }
+                            .stats-data { 
+                                font-size: 18px;
+                                width: 80%;
+                                .stats-title {
+                                    color: #464E59;
+                                    font-weight: bold;
+                                }
+                                td {
+                                    border-bottom: 1px solid @greyBorder;
+                                }
+                            }
                         }
                     }
-                    .stats-data { 
-                        font-size: 18px;
-                        width: 80%;
-                        .stats-title {
-                            color: #464E59;
-                            font-weight: bold;
+                    &#Equip {
+                        .equip-container {
+                            display: flex;
+                            align-items: center;
+                            margin-top: 100px;
+        
+                            table, td, tr {
+                                border: 1px solid @greyBorder;
+                                border-collapse: collapse;
+        
+                                td {
+                                    width: 30%;
+                                }
+                            }
+                            .char {
+                                text-align: center;
+                                .char-image {
+                                    height: 250px;
+                                }
+                            }
+                            .stuff {
+                                img {
+                                    height: 40px;
+                                }
+                                &.right {
+                                    text-align: right;
+                                    
+                                }
+                            }    
+                        } 
+                    }
+                    &#Skills {
+                        .skills-container {
+                            .skills-tree {
+                                display: flex;
+                                justify-content: space-around;
+                                margin-top: 50px;
+                                .skill {
+                                    text-align: center;
+                                    .skill-icon {
+                                        height: 50px;
+                                    }
+                                }
+                            }
+                            .char-image {
+                                text-align: center;
+                                .char {
+                                    height: 400px;
+                                }
+                            }
                         }
-                        td {
-                            border-bottom: 1px solid @greyBorder;
+                    }
+                    &#Items {
+                        .items-container {
+                            margin-top: 50px;
+                            h3 { text-align: center; }
+                            img { height: 500px; }
+                        }
+                    }
+                    &#Options {
+                        .options-container {
+                            margin-top: 80px;
+                            .option {
+                                display: flex;
+                                justify-content: space-around;
+                                width: 60%;
+                                margin: 10px auto 30px;
+
+                                .option-title {
+                                    color: @blueTitle;
+                                    font-weight: bold;
+                                }
+                                .skins, .maps {
+                                    width: 60%;
+                                }
+                            }
                         }
                     }
                 }
-
-                .screen.equip {
-                    display: flex;
-                    // display: none;
-                    align-items: center;
-                    table, td, tr {
-                        border: 1px solid @greyBorder;
-                        border-collapse: collapse;
-
-                        td {
-                            width: 30%;
-                        }
-                    }
-                    .char {
-                        text-align: center;
-                        .char-image {
-                            height: 250px;
-                        }
-                    }
-                    .stuff {
-                        img {
-                            height: 40px;
-                        }
-                    }     
-                }
+            
             }
         }
     }
