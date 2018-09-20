@@ -37,7 +37,29 @@ function changeMap() {
 }
 
 function putMusic() {
-    const bgm = document.createElement("audio");
-    bgm.src = selectedMap + ".mp3";
-    bgm.play();
+    const bgmOpt = document.querySelector('.bgm-option');
+    const music = document.createElement("audio");
+    music.src = selectedMap + ".mp3";
+
+    if (bgmOpt.checked) {
+        console.log('Music is playing...');
+        music.play();
+    } else {
+        console.log('No music...');
+        music.pause();
+    }
+}
+
+function putSound() {
+    const effectsOpt = document.querySelector('.effects-option');
+    const sound = document.createElement("audio");
+    sound.src = selectedSkill + ".mp3";
+
+    if (effectsOpt.checked) {
+        console.log('Effects sound activated');
+        sound.play();
+    } else {
+        console.log('Effects sound desactivated');
+        sound.pause();
+    }
 }
