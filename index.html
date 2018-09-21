@@ -129,7 +129,7 @@
                                 <h5>Storm Gust</h5>
                             </div>
                             <div class="skill">
-                                <img class="skill-icon" src="images/JT.png" alt="" onclick="putMVPSound()">
+                                <img class="skill-icon" src="images/JT.png" alt="" onclick="putMVPSound(), jupitelThunder()">
                                 <h5>Jupitel Thunder</h5>
                             </div>
                             <div class="skill">
@@ -137,7 +137,7 @@
                                 <h5>Meteor Storm</h5>
                             </div>
                             <div class="skill">
-                                <img id="iw" class="skill-icon" src="images/IW.png" alt="" onclick="putIWSound()">
+                                <img id="iw" class="skill-icon" src="images/IW.png" alt="" onclick="putIWSound(), iceWall()">
                                 <h5>Ice Wall</h5>
                             </div>
                         </div>
@@ -145,7 +145,9 @@
                             <p class="skills-msg">Sorry this sound effect is unavailable. Enjoy this MVP sound !</p>
                             <div class="fight-div">
                                 <img class="mvp" src="images/satan.gif" alt="satan">
-                                <img class="fireball" src="images/fire.png" alt="fire">
+                                <img class="fireball" src="images/fire.png" alt="fireball">
+                                <img class="icewall" src="images/icewall.png" alt="icewall">
+                                <img class="thunder" src="images/jt.gif" alt="thunder">
                                 <img class="mvp-icon hidden" src="images/mvp.png" alt="mvp icon">
                                 <img class="char" src="images/casting.gif" alt="char">
                             </div>
@@ -166,7 +168,7 @@
                                 <label class="option-title">BGM</label>
                                 <div class="option-range">
                                     <i class="fa fa-volume-off" aria-hidden="true" style="font-size:25px;"></i>
-                                    <input class="music-volume" type="range" value="50" max="50" min="0" step="5" onchange="controlVolume()">
+                                    <input class="music-volume" type="range" value="50" max="50" min="0" step="5" onchange="controlMusicVolume()">
                                     <i class="fa fa-volume-up" aria-hidden="true" style="font-size:25px;"></i>
                                 </div>
                                 <label class="option-switch">
@@ -178,7 +180,7 @@
                                 <label class="option-title">Effect</label>
                                 <div class="option-range">
                                     <i class="fa fa-volume-off" aria-hidden="true" style="font-size:25px;"></i>
-                                    <input type="range" value="15" max="50" min="0" step="5">
+                                    <input class="sound-volume" type="range" value="15" max="50" min="0" step="5" onchange="controlSoundVolume()">
                                     <i class="fa fa-volume-up" aria-hidden="true" style="font-size:25px;"></i>
                                 </div>
                                 <label class="option-switch">
@@ -200,6 +202,10 @@
                                     <option class="map" value="payon" selected>Payon</option>
                                     <option class="map" value="prontera">Prontera</option>
                                     <option class="map" value="morroc">Morroc</option>
+                                    <option class="map" value="geffen">Geffen</option>
+                                    <option class="map" value="alberta">Alberta</option>
+                                    <option class="map" value="yuno">Yuno</option>
+                                    <option class="map" value="amatsu">Amatsu</option>
                                 </select>
                             </div>
                         </form>

@@ -22,6 +22,24 @@ function openWindow() {
     char.style.display = 'none';
     const window = document.querySelector('.window');
     window.style.display = 'block';
+
+    //Add login sound effect each time we open the window
+    //Check if we already have <audio> if yes we delete it
+    const x = document.querySelector('#effectSound');
+    x && x.remove();
+    //If checked we create <audio>
+    const effectsOpt = document.querySelector('.effects-option');
+    if (effectsOpt.checked) {
+        const sound = document.createElement("audio");
+        sound.type = "audio/mp3";
+        const soundHead = document.getElementsByTagName('body')[0];
+        sound.src="sounds/login.mp3";
+        sound.id="effectSound" ;
+        sound.autoplay = true;
+        soundHead.appendChild(sound); 
+    } else {
+        x && x.remove();
+    }
 }
 
 function changeSkin() {
@@ -52,10 +70,9 @@ function putMusic() {
     }
 }
 
-function controlVolume() {
+function controlMusicVolume() {
     let bgMusic = document.querySelector('#bgSong');
     let volumeValue = document.querySelector('.music-volume').value;
-    console.log(volumeValue);
     if (volumeValue == 50) {
         bgMusic.volume = 1.0;
     } else if (volumeValue < 50 && volumeValue >= 20) {
@@ -80,7 +97,7 @@ function changeMap() { //Put warp sound after each teleport
         sound.type = "audio/mp3";
         const soundHead = document.getElementsByTagName('body')[0];
         sound.src="sounds/warp.mp3";
-        sound.id="effectSound" ;
+        sound.id="effectSound";
         sound.autoplay = true;
         soundHead.appendChild(sound); 
     } else {
@@ -88,6 +105,20 @@ function changeMap() { //Put warp sound after each teleport
     }
     //Change music when we change map
     putMusic();
+}
+
+function controlSoundVolume() {
+    let bgSound = document.querySelector('#effectSound');
+    let volumeValue = document.querySelector('.sound-volume').value;
+    if (volumeValue == 50) {
+        bgSound.volume = 1.0;
+    } else if (volumeValue < 50 && volumeValue >= 20) {
+        bgSound.volume = 0.5;
+    } else if (volumeValue < 20 && volumeValue >= 5) {
+        bgSound.volume = 0.2;
+    } else {
+        bgSound.volume = 0;
+    }
 }
 
 function putSGSound() {
@@ -153,6 +184,21 @@ function putMVPSound() {
     }
 }
 
+function iceWall() {
+    //Show fireball when we click on skill
+    document.querySelector('.icewall').style.opacity = 1;
+    //Hide fireball after 2,5s and show mvp icon
+    setTimeout(function() {
+        document.querySelector('.icewall').style.opacity = 0.5;
+    }, 2000);
+    setTimeout(function() {
+        document.querySelector('.icewall').style.opacity = 0.2;
+    }, 2300);
+    setTimeout(function() {
+        document.querySelector('.icewall').style.opacity = 0;
+    }, 2500);
+}
+
 function meteorStorm() {
     //Show fireball when we click on skill
     document.querySelector('.fireball').style.opacity = 1;
@@ -160,7 +206,21 @@ function meteorStorm() {
     setTimeout(function() {
         document.querySelector('.fireball').style.opacity = 0;
         document.querySelector('.mvp-icon').className = 'mvp-icon';
-    }, 2500);
+    }, 2300);
+    //Hide mvp icon after 4s
+    setTimeout(function() {
+        document.querySelector('.mvp-icon').className = 'mvp-icon hidden';
+    }, 4000);
+}
+
+function jupitelThunder() {
+    //Show fireball when we click on skill
+    document.querySelector('.thunder').style.opacity = 1;
+    //Hide fireball after 2,5s and show mvp icon
+    setTimeout(function() {
+        document.querySelector('.thunder').style.opacity = 0;
+        document.querySelector('.mvp-icon').className = 'mvp-icon';
+    }, 2300);
     //Hide mvp icon after 4s
     setTimeout(function() {
         document.querySelector('.mvp-icon').className = 'mvp-icon hidden';
