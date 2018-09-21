@@ -133,7 +133,7 @@
                                 <h5>Jupitel Thunder</h5>
                             </div>
                             <div class="skill">
-                                <img class="skill-icon" src="images/MS.png" alt="" onclick="putMVPSound()">
+                                <img class="skill-icon" src="images/MS.png" alt="" onclick="putMVPSound(), meteorStorm()">
                                 <h5>Meteor Storm</h5>
                             </div>
                             <div class="skill">
@@ -143,7 +143,12 @@
                         </div>
                         <div class="char-image">
                             <p class="skills-msg">Sorry this sound effect is unavailable. Enjoy this MVP sound !</p>
-                            <img class="char" src="images/casting.gif" alt="char">
+                            <div class="fight-div">
+                                <img class="mvp" src="images/satan.gif" alt="satan">
+                                <img class="fireball" src="images/fire.png" alt="fire">
+                                <img class="mvp-icon hidden" src="images/mvp.png" alt="mvp icon">
+                                <img class="char" src="images/casting.gif" alt="char">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -161,7 +166,7 @@
                                 <label class="option-title">BGM</label>
                                 <div class="option-range">
                                     <i class="fa fa-volume-off" aria-hidden="true" style="font-size:25px;"></i>
-                                    <input type="range" value="15" max="50" min="0" step="5">
+                                    <input class="music-volume" type="range" value="15" max="50" min="0" step="5">
                                     <i class="fa fa-volume-up" aria-hidden="true" style="font-size:25px;"></i>
                                 </div>
                                 <label class="option-switch">
@@ -184,7 +189,7 @@
                             <div class="option">
                                 <label class="option-title">Skin</label>
                                 <select class="skins" name="skins" onchange="changeSkin()">
-                                    <option class="skin" value="basic">Basic skin</option>
+                                    <option class="skin" value="basic" selected>Basic skin</option>
                                     <option class="skin" value="purple">Purple</option>
                                     <option class="skin" value="gold">Gold</option>
                                 </select>
@@ -192,12 +197,13 @@
                             <div class="option">
                                 <label class="option-title">Map</label>
                                 <select class="maps" name="maps" onchange="changeMap()">
-                                    <option class="map" value="payon">Payon</option>
+                                    <option class="map" value="payon" selected>Payon</option>
                                     <option class="map" value="prontera">Prontera</option>
                                     <option class="map" value="morroc">Morroc</option>
                                 </select>
                             </div>
                         </form>
+                        <img src="images/running.gif" alt="char">
                     </div>
                 </div>
             </div>

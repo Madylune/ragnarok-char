@@ -1,12 +1,11 @@
 function toggleTab(event, screenName) {
     const screens = document.querySelectorAll('.screen');
-    for (i=0; i<screens.length; i++) {
-        screens[i].style.display = 'none';
-    }
+    //Hide all screens
+    screens.forEach(screen => screen.style.display = 'none');
+    //Manage active class
     const tabs = document.querySelectorAll('.tab');
-    for (i=0; i<tabs.length; i++) {
-        tabs[i].className = tabs[i].className.replace(' active', '');
-    }
+    tabs.forEach(tab => tab.className = tab.className.replace(' active', ''));
+
     document.getElementById(screenName).style.display = 'block';
     event.currentTarget.className += ' active';
 }
@@ -34,9 +33,8 @@ function changeSkin() {
 function putMusic() {
     //Check if we already have <audio> if yes we delete it
     const toDeleteMusic = document.querySelector('#bgSong');
-    if (toDeleteMusic) {
-        toDeleteMusic.remove();
-    }
+    //Delete <audio> if it is already here
+    toDeleteMusic && toDeleteMusic.remove();
     //Check if bgm option is checked
     const bgmOpt = document.querySelector('.bgm-option');
     const selectedMap = document.querySelector('.maps').value;
@@ -47,22 +45,21 @@ function putMusic() {
         music.src="sounds/" + selectedMap +".mp3";
         music.id="bgSong" ;
         music.autoplay = true;
-        musicHead.appendChild(music);     
+        musicHead.appendChild(music); 
+        console.log(music.volume);    
     } else {
         console.log('No music...');
-        if (toDeleteMusic) {
-            toDeleteMusic.remove();
-        }
+        toDeleteMusic && toDeleteMusic.remove();
     }
 }
 
-function changeMap() {
+function changeMap() { //Put warp sound after each teleport
     const selectedMap = document.querySelector('.maps').value;
     document.body.style.backgroundImage = "url('images/" + selectedMap + ".png')";
-
-    //Put warp sound after changing map
+    //Check if we already have <audio> if yes we delete it
     const x = document.querySelector('#effectSound');
-    if (x) { x.remove(); }
+    x && x.remove();
+    //If checked we create <audio>
     const effectsOpt = document.querySelector('.effects-option');
     if (effectsOpt.checked) {
         const sound = document.createElement("audio");
@@ -73,7 +70,7 @@ function changeMap() {
         sound.autoplay = true;
         soundHead.appendChild(sound); 
     } else {
-        if (x) { x.remove(); } 
+        x && x.remove();
     }
     //Change music when we change map
     putMusic();
@@ -83,9 +80,8 @@ function putSGSound() {
     document.querySelector('.skills-msg').style.opacity = 0;
     //Check if we already have <audio> if yes we delete it
     const toDeleteSound = document.querySelector('#effectSound');
-    if (toDeleteSound) {
-        toDeleteSound.remove();
-    }
+    toDeleteSound && toDeleteSound.remove();
+    //If checked we create <audio>
     const effectsOpt = document.querySelector('.effects-option');
     if (effectsOpt.checked) {
         const sound = document.createElement("audio");
@@ -97,9 +93,7 @@ function putSGSound() {
         soundHead.appendChild(sound);     
     } else {
         console.log('Sorry sound effect unavailable...');
-        if (toDeleteSound) {
-            toDeleteSound.remove();
-        }
+        toDeleteSound && toDeleteSound.remove();
     }
 }
 
@@ -107,9 +101,8 @@ function putIWSound() {
     document.querySelector('.skills-msg').style.opacity = 0;
     //Check if we already have <audio> if yes we delete it
     const toDeleteSound = document.querySelector('#effectSound');
-    if (toDeleteSound) {
-        toDeleteSound.remove();
-    }
+    toDeleteSound && toDeleteSound.remove();
+    
     const effectsOpt = document.querySelector('.effects-option');
     if (effectsOpt.checked) {
         const sound = document.createElement("audio");
@@ -121,18 +114,15 @@ function putIWSound() {
         soundHead.appendChild(sound);     
     } else {
         console.log('Sorry sound effect unavailable...');
-        if (toDeleteSound) {
-            toDeleteSound.remove();
-        }
+        toDeleteSound && toDeleteSound.remove();
     }
 }
 
 function putMVPSound() {
     //Check if we already have <audio> if yes we delete it
     const toDeleteSound = document.querySelector('#effectSound');
-    if (toDeleteSound) {
-        toDeleteSound.remove();
-    }
+    toDeleteSound && toDeleteSound.remove();
+    //If checked we create <audio>
     const effectsOpt = document.querySelector('.effects-option');
     if (effectsOpt.checked) {
         const sound = document.createElement("audio");
@@ -145,8 +135,20 @@ function putMVPSound() {
         document.querySelector('.skills-msg').style.opacity = 1;
     } else {
         console.log('Sorry this sound effect is unavailable...');
-        if (toDeleteSound) {
-            toDeleteSound.remove();
-        }
+        toDeleteSound && toDeleteSound.remove(); //Delete sound if we check off
     }
+}
+
+function meteorStorm() {
+    //Show fireball when we click on skill
+    document.querySelector('.fireball').style.opacity = 1;
+    //Hide fireball after 2,5s and show mvp icon
+    setTimeout(function() {
+        document.querySelector('.fireball').style.opacity = 0;
+        document.querySelector('.mvp-icon').className = 'mvp-icon';
+    }, 2500);
+    //Hide mvp icon after 4s
+    setTimeout(function() {
+        document.querySelector('.mvp-icon').className = 'mvp-icon hidden';
+    }, 4000);
 }

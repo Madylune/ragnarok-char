@@ -9,6 +9,7 @@ body {
     background-image: url("images/payon.png");
     background-size: cover;
     font-family: "Gill Sans", sans-serif;
+    height: 100vh;
     .logo {
         height: 120px;
     }
@@ -44,7 +45,7 @@ body {
                     background-image: linear-gradient(to bottom, #705E86,#9689A4, #9689A4,#A396B2,#9689A4,#A396B2,#9689A4,#A396B2,#9689A4,#BBAFC9);
                 }
                 &.gold {
-                    background-image: linear-gradient(to bottom, #C79216,#DDA420, #DDA420,#E4B23C,#DDA420,#E4B23C,#DDA420,#E4B23C,#DDA420,#E4B23C);
+                    background-image: linear-gradient(to bottom, #C79216,#F2C76B,#FCDC99, #F2C76B,#FCDC99,#F2C76B,#FCDC99,#F2C76B,#FCDC99,#F2C76B,#FCDC99);
                 }
                 .btn-on-off {
                     display: flex;
@@ -179,8 +180,60 @@ body {
                                 .skills-msg {
                                     opacity: 0;
                                 }
-                                .char {
-                                    height: 400px;
+                                .fight-div {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    .mvp {
+                                        height: 350px;
+                                    }
+                                    .fireball {
+                                        @keyframes fire1Spelling {
+                                            0% {
+                                              left: 60%;
+                                              top: 55%;
+                                              transform: rotate(0deg);
+                                              height: 30px;
+                                            }
+                                            50% {
+                                                left: 60%;
+                                                top: 55%;
+                                                height: 50px;
+                                              }
+                                            100% {
+                                              left: 35%;
+                                              top: 55%;
+                                              transform: rotate(359deg);
+                                              height: 100px;
+                                            }
+                                        }
+                                        animation: fire1Spelling infinite linear;
+                                        animation-duration: 3s;
+                                        position: absolute;
+                                        opacity: 0;
+                                    }
+                                    .mvp-icon {
+                                        @keyframes iconGrowing {
+                                            0% {
+                                              opacity: 0.1;
+                                            }
+                                            100% {
+                                              opacity: 1;
+                                            }
+                                        }
+                                        animation-name: iconGrowing;
+                                        animation-duration: 2s;
+                                        position: absolute;
+                                        z-index: 1;
+                                        height: 200px;
+                                        left: 45%;
+
+                                        &.hidden {
+                                            display: none;
+                                        }
+                                    }
+                                    .char {
+                                        height: 400px;
+                                    }
                                 }
                             }
                         }
@@ -189,7 +242,7 @@ body {
                         .items-container {
                             margin-top: 50px;
                             h3 { text-align: center; }
-                            img { height: 500px; }
+                            img { height: 400px; }
                         }
                     }
                     &#Options {
