@@ -45,11 +45,25 @@ function putMusic() {
         music.src="sounds/" + selectedMap +".mp3";
         music.id="bgSong" ;
         music.autoplay = true;
-        musicHead.appendChild(music); 
-        console.log(music.volume);    
+        musicHead.appendChild(music);
     } else {
         console.log('No music...');
         toDeleteMusic && toDeleteMusic.remove();
+    }
+}
+
+function controlVolume() {
+    let bgMusic = document.querySelector('#bgSong');
+    let volumeValue = document.querySelector('.music-volume').value;
+    console.log(volumeValue);
+    if (volumeValue == 50) {
+        bgMusic.volume = 1.0;
+    } else if (volumeValue < 50 && volumeValue >= 20) {
+        bgMusic.volume = 0.5;
+    } else if (volumeValue < 20 && volumeValue >= 5) {
+        bgMusic.volume = 0.2;
+    } else {
+        bgMusic.volume = 0;
     }
 }
 
