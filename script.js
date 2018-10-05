@@ -226,3 +226,36 @@ function jupitelThunder() {
         document.querySelector('.mvp-icon').className = 'mvp-icon hidden';
     }, 4000);
 }
+
+function desequip(idToRemove, idToAdd) {
+    document.getElementById(idToRemove).style.display = 'none';
+    document.getElementById(idToAdd).style.display = 'flex';
+}
+
+function toggleInventoryTab(event, tabName) {
+    const inventoryBags = document.querySelectorAll('.invent-content-item');
+    //Hide all screens
+    inventoryBags.forEach(bag => bag.style.display = 'none');
+    //Manage active class
+    const inventoryTabs = document.querySelectorAll('.invent-nav-item');
+    inventoryTabs.forEach(inventoryTab => inventoryTab.className = inventoryTab.className.replace(' active', ''));
+
+    document.getElementById(tabName).style.display = 'block';
+    event.currentTarget.className += ' active';
+}
+
+//Allow all keydown event according key
+document.addEventListener('keydown', (event) => {
+    const keyName = event.key;
+    //Press insert = char stand/sit
+    if (keyName === 'Insert') {
+        const char = document.querySelector('#canManipulatedChar').src;
+        const standing = "images/stand.png";
+        const sitting = "images/sitting.png";
+        if (char === standing) {
+            document.querySelector('#canManipulatedChar').src = sitting;
+        } else {
+            document.querySelector('#canManipulatedChar').src = standing;
+        }
+    }
+}, false);

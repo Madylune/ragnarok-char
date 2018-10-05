@@ -20,7 +20,8 @@
         <div class="myChar-container">
             <div class="myChar">
                 <img class="bubble" src="images/bubble.png" alt="" onclick="openWindow()">
-                <img class="char" src="images/sitting.png" alt="">
+                <!-- @TODO: Détourer les images du perso -->
+                <img id="canManipulatedChar" class="char" src="images/sitting.png" alt="">
             </div>
         </div>
         <div class="window">
@@ -31,10 +32,10 @@
             </div>
             <div class="window-nav">
                 <ul>
-                    <li class="tab" onclick="toggleTab(event, 'Stats')">Stats</li>
+                    <li class="tab active" onclick="toggleTab(event, 'Stats')">Stats</li>
                     <li class="tab" onclick="toggleTab(event, 'Equip')">Equip</li>
                     <li class="tab" onclick="toggleTab(event, 'Skills')">Skills</li>
-                    <li class="tab" onclick="toggleTab(event, 'Items')">Items</li>
+                    <li class="tab" onclick="toggleTab(event, 'Invent')">Inventory</li>
                     <li class="tab" onclick="toggleTab(event, 'Options')">Options</li>
                 </ul>
             </div>
@@ -98,25 +99,117 @@
                     <div class="equip-container">
                         <table style="width:100%">
                             <tr>
-                                <td class="stuff"><img src="images/parade-cap.gif" alt=""><span>Parade Hat</span></td>
-                                <td class="char" rowspan="5"><img class="char-image" src="images/walking2.gif" alt=""></td> 
-                                <td class="stuff right">Evil Wings Ears<img src="images/evil-ears.gif" alt=""><span></span></td>
+                                <td class="stuff">
+                                    <div id="topheadgear" class="equipment" ondblclick="desequip('topheadgear', 'topheadgear-slot')">
+                                        <img src="images/parade-cap.gif" alt="headgear">
+                                        <span>Parade Hat</span>
+                                    </div>
+                                    <div id="topheadgear-slot" class="emptyslot">
+                                        <div class="slot-img"></div>
+                                        <span>Headgear</span>
+                                    </div>
+                                </td>
+                                <td class="char" rowspan="5">
+                                    <img class="char-image" src="images/walking2.gif" alt="char">
+                                </td> 
+                                <td class="stuff right">
+                                    <div id="midheadgear" class="equipment" ondblclick="desequip('midheadgear', 'midheadgear-slot')">
+                                        <span>Evil Wings Ears</span>
+                                        <img src="images/evil-ears.gif" alt="headgear">
+                                    </div>
+                                    <div id="midheadgear-slot" class="emptyslot">
+                                        <span>Headgear</span>
+                                        <div class="slot-img"></div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="stuff"><img src="images/scarlet-rose.gif" alt="">Scarlet Rose</td>
-                                <td class="stuff right">Orleans' Robe<img src="images/robe.gif" alt=""></td>
+                                <td class="stuff">
+                                    <div id="bottomheadgear" class="equipment">
+                                        <img class="equipment" src="images/scarlet-rose.gif" alt="headgear" ondblclick="desequip('bottomheadgear', 'bottomheadgear-slot')">
+                                        <span>Scarlet Rose</span>
+                                    </div>
+                                    <div id="bottomheadgear-slot" class="emptyslot">
+                                        <div class="slot-img"></div>
+                                        <span>Headgear</span>
+                                    </div>
+                                </td>
+                                <td class="stuff right">
+                                    <div id="armor" class="equipment">
+                                        <span>Orleans' Robe</span>
+                                        <img src="images/robe.gif" alt="armor" ondblclick="desequip('armor', 'armor-slot')">
+                                    </div>
+                                    <div id="armor-slot" class="emptyslot">
+                                        <span>Armor</span>
+                                        <div class="slot-img"></div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="stuff"><img src="images/robe.gif" alt="">Thorn Staff of Darkness</td>
-                                <td class="stuff right">Orleans' Plate<img src="images/plate.gif" alt=""></td>
+                                <td class="stuff">
+                                    <div id="weapon" class="equipment">
+                                        <img class="equipment" src="images/robe.gif" alt="weapon" ondblclick="desequip('weapon', 'weapon-slot')">
+                                        <span>Thorn Staff of Darkness</span>
+                                    </div>
+                                    <div id="weapon-slot" class="emptyslot">
+                                        <div class="slot-img"></div>
+                                        <span>Weapon</span>
+                                    </div>
+                                </td>
+                                <td class="stuff right">
+                                    <div id="shield" class="equipment">
+                                        <span>Orleans' Plate</span>
+                                        <img src="images/plate.gif" alt="shield" ondblclick="desequip('shield', 'shield-slot')">
+                                    </div>
+                                    <div id="shield-slot" class="emptyslot">
+                                        <span>Shield</span>
+                                        <div class="slot-img"></div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="stuff"><img src="images/nyd.gif" alt="">Nydhorgg's Shadow Garb</td>
-                                <td class="stuff right">Variant Shoes<img src="images/variant.gif" alt=""></td>
+                                <td class="stuff">
+                                    <div id="robe" class="equipment">
+                                        <img src="images/nyd.gif" alt="manteau" ondblclick="desequip('robe', 'robe-slot')">
+                                        <span>Nydhorgg's Shadow Garb</span>
+                                    </div>
+                                    <div id="robe-slot" class="emptyslot">
+                                        <div class="slot-img"></div>
+                                        <span>Robe</span>
+                                    </div>
+                                </td>
+                                <td class="stuff right">
+                                    <div id="shoes" class="equipment">
+                                        <span>Variant Shoes</span>
+                                        <img src="images/variant.gif" alt="shoes" ondblclick="desequip('shoes', 'shoes-slot')">
+                                    </div>
+                                    <div id="shoes-slot" class="emptyslot">
+                                        <span>Shoes</span>    
+                                        <div class="slot-img"></div>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
-                                <td class="stuff"><img src="images/gloves.gif" alt="">Orleans' Glove</td>
-                                <td class="stuff right">Orleans' Glove<img src="images/gloves.gif" alt=""></td>
+                                <td class="stuff">
+                                    <div id="leftaccessory" class="equipment">
+                                        <img src="images/gloves.gif" alt="accessory" ondblclick="desequip('leftaccessory', 'leftaccessory-slot')">
+                                        <span>Orleans' Glove</span>
+                                    </div>
+                                    <div id="leftaccessory-slot" class="emptyslot">
+                                        <div class="slot-img"></div>
+                                        <span>Accessory</span>
+                                    </div>
+                                </td>
+                                <td class="stuff right">
+                                    <div id="rightaccessory" class="equipment">
+                                        <span>Orleans' Glove</span>
+                                        <img src="images/gloves.gif" alt="accessory" ondblclick="desequip('rightaccessory', 'rightaccessory-slot')">
+                                    </div>
+                                    <div id="rightaccessory-slot" class="emptyslot">
+                                        <span>Accessory</span>
+                                        <div class="slot-img"></div>
+                                    </div>
+                                </td>
                             </tr>
                         </table>
                     </div>
@@ -154,11 +247,83 @@
                         </div>
                     </div>
                 </div>
-                <div id="Items" class="screen">
-                    <div class="items-container">
-                        <h3>You have no item in your inventory...</h3>
+                <div id="Invent" class="screen">
+                    <div class="invent-container">
+                        <!-- @TODO: Put it when we have no items -->
+
+                        <!-- <h3>You have no item in your inventory...</h3>
                         <h3>You have to hunt some monsters and drop their items.</h3>
-                        <img src="images/kafra.gif" alt="">
+                        <img src="images/kafra.gif" alt=""> -->
+                        <div class="invent-nav">
+                            <ul class="invent-nav-list">
+                                <li class="invent-nav-item active" onclick="toggleInventoryTab(event, 'item')">Item</li>
+                                <li class="invent-nav-item" onclick="toggleInventoryTab(event, 'equip')">Equip</li>
+                                <li class="invent-nav-item" onclick="toggleInventoryTab(event, 'etc')">Etc</li>
+                            </ul>
+                        </div>
+                        <div class="invent-content">
+                            <div id="item" class="invent-content-item">
+                                <div class="invent-content-item-slot">
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>  
+                                    <div class="slot-img"></div>                            
+                                </div>
+                                <div class="invent-content-item-slot">
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>  
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>                            
+                                </div>
+                                <div class="invent-content-item-slot">
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>  
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>                            
+                                </div>
+                            </div>
+                            <div id="equip" class="invent-content-item">
+                                <div class="invent-content-item-slot">
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>  
+                                    <div class="slot-img"></div>                            
+                                </div>
+                                <div class="invent-content-item-slot">
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>  
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>                            
+                                </div>
+                                <div class="invent-content-item-slot">
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>  
+                                    <div class="slot-img"></div>
+                                    <div class="slot-img"></div>                            
+                                </div>
+                            </div>
+                            <div id="etc" class="invent-content-item">
+                                Etc here
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div id="Options" class="screen">
